@@ -4,9 +4,10 @@ import org.gradle.api.Project
 
 public class Verify implements Plugin<Project> {
     void apply(Project project) {
-        project.getTasks().add(MD5GenTask.class);
-        project.task('Verify') << {
-            println "Hello gradle plugin"
-        }
+        project.getTasks().whenTaskAdded{ task ->
+            if (task.name.startsWith("merge") && task.name.endsWith("JniLibFolders")) {
+                task.finalizedBy MD5GenTask
+            }
+        };
     }
 }

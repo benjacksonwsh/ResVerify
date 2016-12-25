@@ -12,7 +12,7 @@ buildscript {
     }
 }
 
-//apply plugin: 'plugin.verifyso'
+apply plugin: 'plugin.verifyso'
 android {
     compileSdkVersion 25
     buildToolsVersion "25.0.2"
